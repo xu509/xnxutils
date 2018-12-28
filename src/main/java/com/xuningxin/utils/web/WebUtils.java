@@ -1,10 +1,12 @@
-package com.xuningxin.utils;
+package com.xuningxin.utils.web;
 
 import com.alibaba.fastjson.JSONArray;
+import okhttp3.*;
 import org.springframework.util.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.regex.Matcher;
@@ -15,6 +17,16 @@ import java.util.regex.Pattern;
  * 网站的工具集
  */
 public class WebUtils {
+
+
+    private static OkHttpClient okHttpClient = new OkHttpClient();
+
+
+    static OkHttpClient getOkHttpClient(){
+        return okHttpClient;
+    }
+
+
 
     //根据字符串获取图片src
     public static JSONArray getImgSrcByHtml(String html) {
@@ -121,6 +133,36 @@ public class WebUtils {
         return null;
     }
 
+
+    public static String doGet(String url) throws IOException{
+        OkHttpClient client = getOkHttpClient();
+        System.out.println("client : " + client.hashCode());
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
+
+    public static final MediaType JSON
+            = MediaType.parse("application/json; charset=utf-8");
+
+    /**
+     *  JSON
+     */
+    public static String doPost(String url,String json) throws IOException{
+        OkHttpClient client = getOkHttpClient();
+        System.out.println("post client : " + client.hashCode());
+
+        RequestBody body = RequestBody.create(JSON, json);
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
 
 
 

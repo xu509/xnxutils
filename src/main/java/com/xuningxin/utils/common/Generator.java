@@ -1,4 +1,4 @@
-package com.xuningxin.utils;
+package com.xuningxin.utils.common;
 
 /**
  * Created by xnx on 2018/12/26.

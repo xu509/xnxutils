@@ -1,4 +1,4 @@
-package com.xuningxin.utils;
+package com.xuningxin.utils.web;
 
 import com.xuningxin.utils.rel.ResultMessage;
 

@@ -1,4 +1,4 @@
-package com.xuningxin.utils;
+package com.xuningxin.utils.sercurity;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

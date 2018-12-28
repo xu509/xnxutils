@@ -1,4 +1,4 @@
-package com.xuningxin.utils;
+package com.xuningxin.utils.sercurity;
 
 import java.util.Base64;
 

@@ -1,4 +1,4 @@
-package com.xuningxin.utils;
+package com.xuningxin.utils.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

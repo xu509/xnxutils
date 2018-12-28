@@ -136,11 +136,9 @@ public class WebUtils {
 
     public static String doGet(String url) throws IOException{
         OkHttpClient client = getOkHttpClient();
-        System.out.println("client : " + client.hashCode());
         Request request = new Request.Builder()
                 .url(url)
                 .build();
-
         Response response = client.newCall(request).execute();
         return response.body().string();
     }
@@ -153,8 +151,6 @@ public class WebUtils {
      */
     public static String doPost(String url,String json) throws IOException{
         OkHttpClient client = getOkHttpClient();
-        System.out.println("post client : " + client.hashCode());
-
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
                 .url(url)
